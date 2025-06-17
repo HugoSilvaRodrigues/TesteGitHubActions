@@ -3,10 +3,10 @@ import os
 import sys 
 import yaml
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+config_path=os.path.join(os.path.dirname(__file__),"config.yml")
 def read():
     print("Lendo os dados")
-    with open("config.yml", 'r') as file:
+    with open(config_path, 'r') as file:
         config=yaml.safe_load(file)
     try:    
         data=pd.read_csv((config['data']['name']))

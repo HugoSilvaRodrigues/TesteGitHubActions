@@ -5,8 +5,8 @@ import sys
 import os
 import yaml
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),"..")))
-
-with open("config.yml", "r") as file:
+config_path=os.path.join(os.path.dirname(__file__),"config.yml")
+with open(config_path, "r") as file:
     config=yaml.safe_load(file)
 
 def preprocessing(data):

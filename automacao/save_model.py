@@ -4,7 +4,8 @@ import joblib
 import yaml
 import json
 
-with open("config.yml",'r') as file:
+config_path=os.path.join(os.path.dirname(__file__),"config.yml")
+with open(config_path,'r') as file:
     config=yaml.safe_load(file)
 
 def save_model(model):
