@@ -1,0 +1,12 @@
+data: 
+  name: "../recipe_site_traffic_2212.csv"
+  pipeline: "../pipeline.pkl"
+  num_columns: ['calories', 'carbohydrate', 'sugar', 'protein', 'servings']
+  cat_columns: ['category']
+training: 
+  test_size: 0.2
+model:
+  params: {'n_estimators': 180, 'criterion': 'gini', 'max_leaf_nodes': 3, 'max_depth': 3}
+  best_score: 0.7664233576642335
+saving:
+  folder_name: 'models'

@@ -1,0 +1,34 @@
+name: DSAProjeto6
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'automacao/**'
+
+
+jobs:
+  build-test:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Instalar dependências Python
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Treinar modelo
+        run: python automacao/main.py
+
+  
