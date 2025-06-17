@@ -10,7 +10,7 @@ with open("config.yml", "r") as file:
     config=yaml.safe_load(file)
 
 def preprocessing(data):
-    print("Iniciando limpeza dos dados:")
+    print("Iniciando limpeza dos dados")
     data["high_traffic"]=data["high_traffic"].fillna(value="low")
     data.dropna(inplace=True)
     data.replace(["High","low"],["1","0"],inplace=True)
