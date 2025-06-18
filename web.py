@@ -50,9 +50,9 @@ with form:
         try:
             predict=model.predict(data_formated)
             if predict==1:
-                st.write("high traffic")
+                st.write("High traffic")
             else:
-                st.write("low traffic")
+                st.write("Low traffic")
         except Exception as e:
             print(e)
         

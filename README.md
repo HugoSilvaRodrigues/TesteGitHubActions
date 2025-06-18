@@ -1,24 +1,23 @@
-description: >
-  This project uses GitHub Actions to automatically build a Docker image
-  whenever specific files or directories are pushed to the repository.
+# Docker Project with GitHub Actions
 
-  The Docker image includes:
-    - A machine learning model (trained during the GitHub Actions workflow)
-    - A data formatting pipeline
-    - A Streamlit-based web application
+This project uses GitHub Actions to automatically build a Docker image whenever specific files or directories are pushed to the repository.
 
-environment_variables:
-  DOCKER_USERNAME:
-    description: >
-      Your Docker Hub username. Used to authenticate and push the Docker image
-      during the GitHub Actions workflow.
-    required: true
-    example: "your-docker-username"
+## The Docker image includes:
 
-  DOCKER_PASSWORD:
-    description: >
-      Your Docker Hub password or access token. Used alongside DOCKER_USERNAME
-      to authenticate in the GitHub Actions workflow.
-    required: true
-    example: "your-docker-password-or-token"
+- A machine learning model (trained during the GitHub Actions workflow)  
+- A data formatting pipeline  
+- A web application built with Streamlit  
+
+---
+
+## Environment Variables
+
+For the workflow to run correctly, the following environment variables (GitHub Secrets) must be set:
+
+| Variable          | Description                                                                                     | Required | Example                    |
+|-------------------|-------------------------------------------------------------------------------------------------|----------|----------------------------|
+| `DOCKER_USERNAME` | Your Docker Hub username. Used to authenticate and push the Docker image.                      | Yes      | `your-docker-username`      |
+| `DOCKER_PASSWORD` | Your Docker Hub password or access token. Used together with the username for authentication.  | Yes      | `your-password-or-token`    |
+
+> **Important:** These variables must be configured under **Settings > Secrets and variables > Actions** in GitHub. They **are not exposed in the code** and are kept secure.
 
