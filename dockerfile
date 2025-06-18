@@ -2,7 +2,10 @@ FROM python:3.11
 
 WORKDIR \app
 
-COPY . .
+COPY final_model.pkl .
+COPY pipeline.pkl .
+COPY requirements.txt . 
+COPY web.py . 
 
 RUN pip install -r requirements.txt
 

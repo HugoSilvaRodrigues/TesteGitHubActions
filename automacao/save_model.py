@@ -12,6 +12,7 @@ def save_model(model):
     print("Salvando o modelo")
     os.makedirs(config['saving']['folder_name'],exist_ok=True)
     files=os.listdir(config['saving']['folder_name'])
+    joblib.dump(model,"../final_model.pkl")
     if len(files)==0:
         os.makedirs(config['saving']['folder_name']+"\model_1")
         joblib.dump(model,config['saving']['folder_name']+"\model_1\model_1.pkl")

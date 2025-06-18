@@ -4,7 +4,7 @@ import pandas as pd
 import os
 
 
-def load_model():
+def load_model_from_folder():
     models=os.listdir("automacao/models")
     if len(models)==0:
         print("Nenhum modelo treinado")
@@ -15,6 +15,10 @@ def load_model():
         model=joblib.load(path)
         return model
     
+def load_model_single():
+    model=joblib.load("final_model.pkl")
+    return model
+        
 form = st.form("my_form")
 with form:
     col1, col2 = st.columns(2)
@@ -42,7 +46,7 @@ with form:
         pipeline=joblib.load("pipeline.pkl")
         data=pd.DataFrame({"calories":[calories],"carbohydrate":[carboidrato],"sugar":[sugar],"protein":[protein],"servings":[servings],"category":[category]})
         data_formated=pipeline.transform(data)
-        model=load_model()
+        model=load_model_single()
         try:
             predict=model.predict(data_formated)
             if predict==1:
