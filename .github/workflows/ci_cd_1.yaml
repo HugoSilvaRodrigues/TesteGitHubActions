@@ -1,38 +1,35 @@
-name: Criação imagem docker
+name: Build and Push Docker Image
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'automacao/**'
-
-
+      - 'automation/**'
+      - 'requirements.txt'
+      - 'web.py'
+      - 'dockerfile'
 jobs:
   build-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código
+      - name: Code checkout #Copy the repository files to the runner that will execute the action, without this step wouldn`t be files for the next ones
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Configurar Python
+      - name: Setting up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
 
-      - name: Instalar dependências Python
+      - name: Install Python Dependencies
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Treinar modelo
-        working-directory: automacao
+        working-directory: automation # Set working directory to 'automation' where the main.py file is located
+                                      # Each step starts from the root directory, so we must define this explicitly
         run: python main.py
 
       - name: Log in to Docker Hub
